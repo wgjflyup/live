@@ -1,0 +1,5 @@
+site_name: 我的文档
+nav:
+- 主页: 'index.md'
+- 关于: 'about.md'
+theme: readthedocs
