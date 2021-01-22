@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>消息队列 - Markdown实用指南</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u6d88\u606f\u961f\u5217";
+    var mkdocs_page_input_path = "bbb\\3\u7ea7\u76ee\u5f55_\u6d88\u606f\u961f\u5217.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Markdown实用指南</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">首页</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../markdown/">测试</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../aaa/a1/">测试.1</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../b1/">测试.1.1</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ccc/c1/">测试.1.1.1</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Markdown实用指南</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>消息队列</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">消息队列</h1>
+<!-- GFM-TOC -->
+<ul>
+<li><a href="#消息队列">消息队列</a><ul>
+<li><a href="#一消息模型">一、消息模型</a><ul>
+<li><a href="#点对点">点对点</a></li>
+<li><a href="#发布订阅">发布/订阅</a></li>
+</ul>
+</li>
+<li><a href="#二使用场景">二、使用场景</a><ul>
+<li><a href="#异步处理">异步处理</a></li>
+<li><a href="#流量削锋">流量削锋</a></li>
+<li><a href="#应用解耦">应用解耦</a></li>
+</ul>
+</li>
+<li><a href="#三可靠性">三、可靠性</a><ul>
+<li><a href="#发送端的可靠性">发送端的可靠性</a></li>
+<li><a href="#接收端的可靠性">接收端的可靠性</a></li>
+</ul>
+</li>
+<li><a href="#参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+<!-- GFM-TOC -->
+
+<h2 id="_2">一、消息模型</h2>
+<h3 id="_3">点对点</h3>
+<p>消息生产者向消息队列中发送了一个消息之后，只能被一个消费者消费一次。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/image-20191212011250613.png"/> </div>
+<p><br></p>
+<h3 id="_4">发布/订阅</h3>
+<p>消息生产者向频道发送一个消息之后，多个消费者可以从该频道订阅到这条消息并消费。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/image-20191212011410374.png"/> </div>
+<p><br></p>
+<p>发布与订阅模式和观察者模式有以下不同：</p>
+<ul>
+<li>观察者模式中，观察者和主题都知道对方的存在；而在发布与订阅模式中，生产者与消费者不知道对方的存在，它们之间通过频道进行通信。</li>
+<li>观察者模式是同步的，当事件触发时，主题会调用观察者的方法，然后等待方法返回；而发布与订阅模式是异步的，生产者向频道发送一个消息之后，就不需要关心消费者何时去订阅这个消息，可以立即返回。</li>
+</ul>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/image-20191212011747967.png"/> </div>
+<p><br></p>
+<h2 id="_5">二、使用场景</h2>
+<h3 id="_6">异步处理</h3>
+<p>发送者将消息发送给消息队列之后，不需要同步等待消息接收者处理完毕，而是立即返回进行其它操作。消息接收者从消息队列中订阅消息之后异步处理。</p>
+<p>例如在注册流程中通常需要发送验证邮件来确保注册用户身份的合法性，可以使用消息队列使发送验证邮件的操作异步处理，用户在填写完注册信息之后就可以完成注册，而将发送验证邮件这一消息发送到消息队列中。</p>
+<p>只有在业务流程允许异步处理的情况下才能这么做，例如上面的注册流程中，如果要求用户对验证邮件进行点击之后才能完成注册的话，就不能再使用消息队列。</p>
+<h3 id="_7">流量削锋</h3>
+<p>在高并发的场景下，如果短时间有大量的请求到达会压垮服务器。</p>
+<p>可以将请求发送到消息队列中，服务器按照其处理能力从消息队列中订阅消息进行处理。</p>
+<h3 id="_8">应用解耦</h3>
+<p>如果模块之间不直接进行调用，模块之间耦合度就会很低，那么修改一个模块或者新增一个模块对其它模块的影响会很小，从而实现可扩展性。</p>
+<p>通过使用消息队列，一个模块只需要向消息队列中发送消息，其它模块可以选择性地从消息队列中订阅消息从而完成调用。</p>
+<h2 id="_9">三、可靠性</h2>
+<h3 id="_10">发送端的可靠性</h3>
+<p>发送端完成操作后一定能将消息成功发送到消息队列中。</p>
+<p>实现方法：在本地数据库建一张消息表，将消息数据与业务数据保存在同一数据库实例里，这样就可以利用本地数据库的事务机制。事务提交成功后，将消息表中的消息转移到消息队列中，若转移消息成功则删除消息表中的数据，否则继续重传。</p>
+<h3 id="_11">接收端的可靠性</h3>
+<p>接收端能够从消息队列成功消费一次消息。</p>
+<p>两种实现方法：</p>
+<ul>
+<li>保证接收端处理消息的业务逻辑具有幂等性：只要具有幂等性，那么消费多少次消息，最后处理的结果都是一样的。</li>
+<li>保证消息具有唯一编号，并使用一张日志表来记录已经消费的消息编号。</li>
+</ul>
+<h2 id="_12">参考资料</h2>
+<ul>
+<li><a href="http://developers-club.com/posts/270339/">Observer vs Pub-Sub</a></li>
+<li><a href="https://blog.csdn.net/lizhitao/article/details/47723105">消息队列中点对点与发布订阅区别</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2021 <a href="https://www.163.com">wgjflyup</a>, Maintained by the <a href="https://www.163.com">MkDocs Team</a>.</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
